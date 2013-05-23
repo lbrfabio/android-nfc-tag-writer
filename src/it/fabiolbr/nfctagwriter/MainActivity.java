@@ -99,9 +99,9 @@ public class MainActivity extends Activity {
 	    //IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
 	    //IntentFilter[] mWriteTagFilters = new IntentFilter[] { tagDetected };
 
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        Intent intent = new Intent(this, getClass());
         //intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        mNfcPendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+        mNfcPendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         //filters\techLists are null = in foreground all tags as ACTION_TAG_DISCOVERED
         mNfcAdapter.enableForegroundDispatch(this, mNfcPendingIntent, null, null);
         
@@ -129,9 +129,9 @@ public class MainActivity extends Activity {
                 || NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())){
             Tag detectedTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
 
-            NdefRecord record = NdefRecord.createMime(mTextMime.getText()
+            NdefRecord mimeRecord = NdefRecord.createMime(mTextMime.getText()
                     .toString(), mTextValue.getText().toString().getBytes());
-            NdefMessage message = new NdefMessage(new NdefRecord[] { record });
+            NdefMessage message = new NdefMessage(new NdefRecord[] { mimeRecord });
             if (writeTag(message, detectedTag)) {
                 Toast.makeText(this, R.string.success_tag_written, Toast.LENGTH_SHORT)
                         .show();

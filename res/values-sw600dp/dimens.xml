@@ -7,6 +7,7 @@
     
     <dimen name="activity_horizontal_padding">128dp</dimen>
     
-    <dimen name="distant_margin_top">48dp</dimen>
-
+    <dimen name="distant_margin_top">32dp</dimen>
+    <dimen name="distant_margin_bottom">16dp</dimen>
+    
 </resources>
