@@ -3,6 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/activity_margin"
+    android:paddingLeft="@dimen/activity_horizontal_padding"
+    android:paddingRight="@dimen/activity_horizontal_padding"
     android:baselineAligned="false"
     android:orientation="vertical"
     tools:context=".MainActivity" >
@@ -12,14 +14,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_margin"
-        android:hint="@string/edit_mime_type"/>
+        android:hint="@string/edit_mime_type"
+        />
 
     <EditText
         android:id="@+id/edit_value"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_margin"
-        android:hint="@string/edit_value" />
+        android:hint="@string/edit_value"
+        android:isScrollContainer="true" />
 
     <Button
         android:id="@+id/btn_write"

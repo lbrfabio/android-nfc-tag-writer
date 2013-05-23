@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">NFCTagWriter</string>
+    <string name="app_name">NFC Tag Writer</string>
+
+    <string name="edit_value">Value</string>
+
+    <string name="edit_mime_type">MIME-type</string>
+
+    <string name="btn_write_tag">Write Tag</string>
+
+    <string name="error_text_empty">Error: empty</string>
+
+    <string name="success_tag_written">Success: tag written</string>
+
+    <string name="error_value_toobig">Error: value is too big: %1$d / %2$d</string>
 
 </resources>

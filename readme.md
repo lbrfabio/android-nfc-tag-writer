@@ -7,6 +7,6 @@ It is based on this tutorial: http://www.jessechen.net/blog/how-to-nfc-on-the-an
 
 Min Android version: 4.1
 
-App on the playstore: https://play.google.com/store/apps/details?id=nl.paulus.nfctagwriter
+App on the playstore: https://play.google.com/store/apps/details?id=it.fabiolbr.nfctagwriter
 
 ![screenshot](https://github.com/balloob/Android-NFC-Tag-Writer/raw/master/screenshot.png)
