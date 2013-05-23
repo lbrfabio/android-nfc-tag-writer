@@ -14,6 +14,8 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -65,7 +67,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+				
 		// initialize views
 		mTextMime = (EditText)findViewById(R.id.edit_mime);
 		mTextValue = (EditText)findViewById(R.id.edit_value);
@@ -91,7 +93,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 	    super.onResume();
-	    enableTagWriteMode();
+	    enableTagWriteMode(); //must be after onResume
 	}
 	
 	
@@ -112,7 +114,7 @@ public class MainActivity extends Activity {
 	
 	@Override
 	protected void onPause() {
-	    disableTagWriteMode();
+	    disableTagWriteMode(); // must be before onPause
 	    super.onPause();
 	}
 
@@ -200,6 +202,38 @@ public class MainActivity extends Activity {
             }
         } catch (Exception e) {
             return false;
+        }
+    }
+    
+
+    // called to manage menu\actionbar buttons
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case R.id.menu_clear:
+            clearText();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    // populate menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    
+    /**
+     * Clear text of all EditText
+     */
+    private void clearText() {
+        if(mTextMime.getText().length() != 0) {
+            mTextMime.getText().clear();
+        }
+        if(mTextValue.getText().length() != 0) {
+            mTextValue.getText().clear();
         }
     }
 }

@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--  menu MainActivity-->
+    
+    <item android:id="@+id/menu_clear"
+        android:orderInCategory="99"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_clear"/>
+</menu>
