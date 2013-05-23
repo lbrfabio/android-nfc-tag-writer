@@ -7,8 +7,6 @@
 
     <string name="edit_mime_type">MIME-type</string>
 
-    <string name="btn_write_tag">Write Tag</string>
-
     <string name="error_text_empty">Error: empty</string>
 
     <string name="success_tag_written">Success: tag written</string>
@@ -17,5 +15,6 @@
     
     <!--  menu -->
     <string name="menu_clear">Clear</string>
+    <string name="menu_write">Write</string>
 
 </resources>

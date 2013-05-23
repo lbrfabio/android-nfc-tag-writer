@@ -16,9 +16,6 @@ import android.nfc.tech.NdefFormatable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,34 +30,11 @@ public class MainActivity extends Activity {
 	private PendingIntent mNfcPendingIntent;
 	
 	// views
-	private Button mBtnWrite;
 	private EditText mTextMime;
 	private EditText mTextValue;
 	
 	@SuppressWarnings("unused")
     private	AlertDialog mDialog;
-	
-	private OnClickListener mListenerClick = new OnClickListener() {
-        
-	    @Override
-        public void onClick(View v) {
-            //mNfcAdapter = NfcAdapter.getDefaultAdapter(MainActivity.this);
-            //mNfcPendingIntent = PendingIntent.getActivity(MainActivity.this, 0,
-            //    new Intent(MainActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
-
-            enableTagWriteMode();
-             
-            new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        //probably not necessary. 
-                        disableTagWriteMode();
-                    }
-
-                }).create().show();     
-        }
-    };
 		
 	
 	@Override
@@ -71,10 +45,7 @@ public class MainActivity extends Activity {
 		// initialize views
 		mTextMime = (EditText)findViewById(R.id.edit_mime);
 		mTextValue = (EditText)findViewById(R.id.edit_value);
-		mBtnWrite = (Button)findViewById(R.id.btn_write);
-		
-		mBtnWrite.setOnClickListener(mListenerClick);
-		
+				
 		// initialize nfc stuff
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
         if (mNfcAdapter == null) {
@@ -84,7 +55,7 @@ public class MainActivity extends Activity {
             finish();
             return;
         }
-        if (!mNfcAdapter.isEnabled()) {
+        else if (!mNfcAdapter.isEnabled()) {
             Toast.makeText(this, "NFC is disabled", Toast.LENGTH_SHORT).show();
             //TODO: make alert dialog to ask to open nfc settings or close app 
         }
@@ -213,6 +184,9 @@ public class MainActivity extends Activity {
         case R.id.menu_clear:
             clearText();
             return true;
+        case R.id.menu_write:
+            writeText();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -223,7 +197,8 @@ public class MainActivity extends Activity {
         // this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-    }
+    }    
+    
     
     /**
      * Clear text of all EditText
@@ -236,4 +211,23 @@ public class MainActivity extends Activity {
             mTextValue.getText().clear();
         }
     }
+    
+    private void writeText() {
+        //mNfcAdapter = NfcAdapter.getDefaultAdapter(MainActivity.this);
+        //mNfcPendingIntent = PendingIntent.getActivity(MainActivity.this, 0,
+        //    new Intent(MainActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+
+        enableTagWriteMode();
+         
+        new AlertDialog.Builder(MainActivity.this).setTitle("Touch tag to write")
+            .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        // probably not necessary.
+                        disableTagWriteMode();
+                    }
+
+            }).create().show();     
+    }
+    
 }

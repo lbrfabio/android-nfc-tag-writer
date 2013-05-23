@@ -24,16 +24,6 @@
         android:gravity="top"
         android:hint="@string/edit_value"
         android:inputType="textMultiLine"
-        android:isScrollContainer="true"
-        android:maxLines="3" />
-
-    <Button
-        android:id="@+id/btn_write"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/distant_margin_top"
-        android:text="@string/btn_write_tag" />
+        android:isScrollContainer="true" />
 
 </LinearLayout>
